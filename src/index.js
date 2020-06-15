@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import CommentItem from './comment-item';
+
 /* eslint-disable no-unused-expressions */
+
 class Comment extends React.Component {
   constructor() {
     super();
@@ -22,15 +24,14 @@ class Comment extends React.Component {
           isVisible: true
   }
     this.handleSubmit = this.handleSubmit.bind(this),
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this),
     this.removeComment = this.removeComment.bind(this)
   }
 
-   removeComment(key) {
-     let fields = this.state.fields
-   this.setState(prevState => ({
-     fileds: prevState.fields.filter(fields => fields.key !==key)
-   }))
+   removeComment(i) {
+     let fields = this.state.fields.slice();
+     fields.splice(i, 1);
+     this.setState({ fields });
   }
 
 
