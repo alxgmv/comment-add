@@ -1,13 +1,8 @@
 import React from 'react';
 
 const CommentItem = (props) => {
-  // console.log(props)
-  const className = props.isVisible ? 'visible': 'hidden';
-
   return (
-    <ul
-      className={className}
-    >
+    <ul>
       <li>{props.author}</li>
       <li>{props.commentText}</li>
       <li>{props.date}</li>

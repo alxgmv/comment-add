@@ -52,14 +52,13 @@ class Comment extends React.Component {
         date: new Date().toLocaleString(),
       });
       this.setState( {fields} );
-      this.setState({
-        isVisible: true
-      })
     } else {
-      alert("empty field!");
+      alert("empty fields!");
     }
-    console.log('addcomment');
-    console.log(this.state.isVisible);
+    localStorage.setItem(this.state.newAuthor, this.state.newCommentText);
+    // localStorage.setItem('text', this.state.newCommentText);
+    this.state.newAuthor = '';
+    this.state.newCommentText = '';
   }
 
   render() {
@@ -75,7 +74,6 @@ class Comment extends React.Component {
                     commentText={field.commentText}
                     date={field.date}
                     removeComment={this.removeComment.bind(this, i)}
-                    isVisible={this.state.isVisible}
                  />
               )
             })
