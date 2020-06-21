@@ -55,12 +55,23 @@ class Comment extends React.Component {
     } else {
       alert("empty fields!");
     }
-    localStorage.setItem(this.state.newAuthor, this.state.newCommentText);
-    // localStorage.setItem('text', this.state.newCommentText);
+    localStorage.setItem('comments', JSON.stringify(fields));
     this.state.newAuthor = '';
     this.state.newCommentText = '';
   }
 
+  componentDidMount() {
+    let fields = [...this.state.fields];
+    let data = JSON.parse(localStorage.getItem('comments'));
+    if (localStorage.getItem('comments')) {
+      fields = data;
+    }
+    else {
+      fields = this.state.fields
+    }
+    this.setState({ fields });
+
+  }
   render() {
     return (
       <div>
