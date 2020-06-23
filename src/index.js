@@ -32,6 +32,7 @@ class Comment extends React.Component {
      let fields = this.state.fields.slice();
      fields.splice(i, 1);
      this.setState({ fields });
+     localStorage.setItem('comments', JSON.stringify(fields));
   }
 
 
